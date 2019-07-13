@@ -1,0 +1,33 @@
+{
+  "name": "csv_to_json",
+  "version": "1.0.0",
+  "description": "Converts a csv file to a json.",
+  "main": "csv_to_json.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "csv",
+    "to",
+    "json",
+    "csv_to_json",
+    "csv-to-json",
+    "csv",
+    "json",
+    "convert",
+    "transform",
+    "read",
+    "csv",
+    "convert",
+    "csv",
+    "convert",
+    "csv",
+    "to",
+    "json"
+  ],
+  "author": "Prince Verma",
+  "license": "ISC"
+}
