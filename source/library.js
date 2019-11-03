@@ -4,25 +4,27 @@ const extractValues = function (splittedLine) {
   let value = ES;
   let values = [];
   let isValueComplete = true;
-  const length = splittedLine.length;
+  const lastIndex = splittedLine.length - 1;
 
   splittedLine.forEach((char, index) => {
     const previousChar = splittedLine[index - 1];
     const nextChar = splittedLine[index + 1];
-    const lastIndex = length - 1;
     if (char == DIC) {
       isValueComplete = !isValueComplete;
       if (
         previousChar == DIC ||
         previousChar == COMMA ||
         nextChar == COMMA ||
-        index == lastIndex - 1
+        index == lastIndex - 1 ||
+        index == 0
       ) {
         return;
       }
     }
 
     if ((char == COMMA || index == lastIndex) && isValueComplete) {
+      if (char != DIC && char != COMMA && char != "\r")
+        value += char;
       values.push(value);
       value = ES;
       return;
