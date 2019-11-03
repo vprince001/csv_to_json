@@ -2,7 +2,7 @@
 
 <div align="center">
 
-Reads a csv file having a table and returns an array of obects. In which each object consists of all headers as keys and there data as values.
+Reads a csv file or data variable having a table and returns an array of obects. In which each object consists of all headers as keys and there data as values.
 
 </div>
 
@@ -18,9 +18,18 @@ npm i --save csv-file-to-json
 
 ### In module system
 
+Use `filePath` key to provide `CSV data from file`.
+
 ```javascript
 const csvToJson = require("csv-file-to-json");
-const dataInJSON = csvToJSON("./filePath.csv");
+const dataInJSON = csvToJSON({ filePath: "./filePath.csv" });
+```
+
+Use `data` key to provide `CSV data from variable or directly`.
+
+```javascript
+const csvToJSON = require("csv-file-to-json");
+const dataInJSON = csvToJSON({ data: someCSVData });
 ```
 
 #### Sample input (csv data) :

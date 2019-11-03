@@ -56,8 +56,10 @@ const getFinalResult = function (data, headers) {
   return finalResult;
 };
 
-const getData = function (filePath, fs) {
-  return fs.readFileSync(filePath, FORMAT).split(NL);
+const getData = function (params, fs) {
+  if (params.filePath == null)
+    return params.data.split(NL);
+  return fs.readFileSync(params.filePath, FORMAT).split(NL);
 };
 
 module.exports = { extractValues, getObj, getFinalResult, getData };
