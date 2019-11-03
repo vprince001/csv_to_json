@@ -59,7 +59,7 @@ const getFinalResult = function (data, headers) {
 const getData = function (params, fs) {
   if (params.filePath == null)
     return params.data.split(NL);
-  return fs.readFileSync(params.filePath, FORMAT).split(NL);
+  return fs.readFileSync(params.filePath, FORMAT).replace(/^\uFEFF/, '').split(NL);
 };
 
 module.exports = { extractValues, getObj, getFinalResult, getData };
