@@ -1,5 +1,5 @@
 {
-  "name": "csv_to_json",
+  "name": "csv-file-to-json",
   "version": "1.0.0",
   "description": "Converts a csv file to a json.",
   "main": "csv_to_json.js",

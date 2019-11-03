@@ -1,7 +1,6 @@
-const fs = require("fs");
 const { COMMA, DIC, ES, NL, FORMAT } = require("./constants");
 
-const extractValues = function(splittedLine) {
+const extractValues = function (splittedLine) {
   let value = ES;
   let values = [];
   let isValueComplete = true;
@@ -33,15 +32,20 @@ const extractValues = function(splittedLine) {
   return values;
 };
 
-const getObj = function(headers, lineData) {
+const getObj = function (headers, lineData) {
   const obj = {};
+
   headers.forEach((header, index) => {
-    obj[header] = lineData[index];
+    let value = lineData[index];
+    if (value == 'null') {
+      value = null;
+    }
+    obj[header] = value;
   });
   return obj;
 };
 
-const getFinalResult = function(data, headers) {
+const getFinalResult = function (data, headers) {
   const finalResult = [];
   data.forEach(line => {
     line = line.split(ES);
@@ -52,7 +56,7 @@ const getFinalResult = function(data, headers) {
   return finalResult;
 };
 
-const getData = function(filePath) {
+const getData = function (filePath, fs) {
   return fs.readFileSync(filePath, FORMAT).split(NL);
 };
 
