@@ -29,5 +29,15 @@
     "json"
   ],
   "author": "Prince Verma",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vprince001/csv_to_json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vprince001/csv_to_json/issues"
+  },
+  "homepage": "https://github.com/vprince001/csv_to_json#readme"
 }
