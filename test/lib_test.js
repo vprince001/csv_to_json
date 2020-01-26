@@ -1,5 +1,14 @@
 const { deepEqual } = require("assert");
-const { extractValues, getObj, getData, getFinalResult } = require("../source/library");
+const {expect} = require('chai');
+const {
+  extractValues,
+  getObj,
+  getData,
+  getFinalResult,
+  readData,
+  readFile
+} = require("../source/library");
+
 const {
   ES,
   CSV_DATA,
@@ -10,7 +19,9 @@ const {
   OBJ_FOR_LINE1,
   OBJ_FOR_LINE2,
   FINAL_RESULT,
-  fs
+  fs,
+  FILE_PATH,
+  WRONG_FILE_PATH
 } = require("./constants_for_test");
 
 describe("extractValues", function () {
@@ -87,18 +98,45 @@ describe("getObj", function () {
 });
 
 describe("getData", function () {
-  it("should return data in Array if filePath is given", function () {
-    const actual = getData({ filePath: "./data.csv" }, fs);
+  it("should throw an error if no valid argument is passed", function() {
+    expect(() => getData({})).to.throw();
+  });
+
+  it("should take data as string if filepath is not given", function () {
+    const actual = getData({data: CSV_DATA});
+    const expected = DATA_IN_ARRAY;
+
+    deepEqual(actual, expected);
+  });
+});
+
+describe("readData", function () {
+  it("should return data in Array if data is a string", function () {
+    const actual = readData(CSV_DATA);
     const expected = DATA_IN_ARRAY;
 
     deepEqual(actual, expected);
   });
 
-  it("should return data in Array if CSV data is given", function () {
-    const actual = getData({ data: CSV_DATA });
+  it("should throw an error if data is not a string", function () {
+    expect(() => readData(["someValues"])).to.throw();
+  });
+
+  it("should throw an error if data is an empty string", function () {
+    expect(() => readData(ES)).to.throw();
+  });
+});
+
+describe("readFile", function () {
+  it("should return data in Array if file exists", function () {
+    const actual = readFile(FILE_PATH, fs);
     const expected = DATA_IN_ARRAY;
 
     deepEqual(actual, expected);
+  });
+
+  it("should throw an error if file does not exists", function () {
+    expect(() => getData({filePath: WRONG_FILE_PATH}, fs)).to.throw();
   });
 });
 

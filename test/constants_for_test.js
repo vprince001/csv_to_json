@@ -1,10 +1,12 @@
 const NL = "\n";
 const comma = ",";
 const ES = "";
+const FILE_PATH = "./data.json";
+const WRONG_FILE_PATH = "./d.csv";
 
 const CSV_DATA = `FIRST_NAME,LAST_NAME,NUMBER,EMAIL,ADDRESS
 Debra,Berks,880012XXXX,debra.burks@yahoo.com,"9273 Thome Ave., Orchard Park, NY - 14127"
-Kasha,Todd,null,kasha.todd@yahoo.com,"910, Vine Street, Campbell, CA - 95008"`
+Kasha,Todd,null,kasha.todd@yahoo.com,"910, Vine Street, Campbell, CA - 95008"`;
 
 const DATA_IN_ARRAY = CSV_DATA.split(NL);
 
@@ -45,7 +47,8 @@ const OBJ_FOR_LINE2 = {
 const FINAL_RESULT = [OBJ_FOR_LINE1, OBJ_FOR_LINE2];
 
 const fs = {
-  readFileSync: () => CSV_DATA
+  readFileSync: () => CSV_DATA,
+  existsSync: filePath => filePath === FILE_PATH
 };
 
 module.exports = {
@@ -58,5 +61,7 @@ module.exports = {
   OBJ_FOR_LINE1,
   OBJ_FOR_LINE2,
   FINAL_RESULT,
-  fs
+  fs,
+  FILE_PATH,
+  WRONG_FILE_PATH
 };
