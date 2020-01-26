@@ -46,7 +46,7 @@ const FINAL_RESULT = [OBJ_FOR_LINE1, OBJ_FOR_LINE2];
 
 const fs = {
   readFileSync: () => CSV_DATA
-}
+};
 
 module.exports = {
   ES,

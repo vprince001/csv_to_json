@@ -5,8 +5,7 @@ const { extractValues, getFinalResult, getData } = require("./source/library");
 const main = function (params) {
   const data = getData(params, fs);
   const headers = extractValues(data[0].split(ES));
-  const finalResult = getFinalResult(data.slice(1), headers);
-  return finalResult;
+  return getFinalResult(data.slice(1), headers);
 };
 
 module.exports = main;

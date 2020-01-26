@@ -9,21 +9,21 @@ const extractValues = function (splittedLine) {
   splittedLine.forEach((char, index) => {
     const previousChar = splittedLine[index - 1];
     const nextChar = splittedLine[index + 1];
-    if (char == DIC) {
+    if (char === DIC) {
       isValueComplete = !isValueComplete;
       if (
-        previousChar == DIC ||
-        previousChar == COMMA ||
-        nextChar == COMMA ||
-        index == lastIndex - 1 ||
-        index == 0
+        previousChar === DIC ||
+        previousChar === COMMA ||
+        nextChar === COMMA ||
+        index === lastIndex - 1 ||
+        index === 0
       ) {
         return;
       }
     }
 
-    if ((char == COMMA || index == lastIndex) && isValueComplete) {
-      if (char != DIC && char != COMMA && char != "\r")
+    if ((char === COMMA || index === lastIndex) && isValueComplete) {
+      if (char !== DIC && char !== COMMA && char !== "\r")
         value += char;
       values.push(value);
       value = ES;
@@ -39,7 +39,7 @@ const getObj = function (headers, lineData) {
 
   headers.forEach((header, index) => {
     let value = lineData[index];
-    if (value == 'null') {
+    if (value === 'null') {
       value = null;
     }
     obj[header] = value;
