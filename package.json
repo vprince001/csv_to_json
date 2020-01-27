@@ -1,6 +1,6 @@
 {
   "name": "csv-file-to-json",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Converts a csv file to a json.",
   "main": "csv_to_json.js",
   "directories": {
