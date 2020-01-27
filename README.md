@@ -1,3 +1,5 @@
+<img src="./resources/csv_to_json.png" align="right" width="150" height="100"/>
+
 <h1 align="center">csv-file-to-json</h1>
 
 <div align="center">
@@ -84,3 +86,13 @@ Charolette,Rice,720012XXXX,charolette.rice@msn.com,"107 ~ River Dr. `Sacramento`
   }
 ]
 ```
+
+Use `separator` key to specific your separator. `Default separator is ","`.
+
+```javascript
+const dataInJSON = txtToJSON({ filePath: "./filePath.txt", separator: "," });
+```
+
+# References
+* To convert text and csv both to json. Try - https://www.npmjs.com/package/data-to-json
+* To convert only txt data to json. Try - https://www.npmjs.com/package/txt-file-to-json

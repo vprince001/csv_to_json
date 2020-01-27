@@ -14,21 +14,21 @@ const {
     FILE_NOT_FOUND_EXCEPTION
 } = require("./constants");
 
-const extractValues = function (splittedLine) {
+const extractValues = function (chars, separator = COMMA) {
     let value = ES;
     let values = [];
     let isValueComplete = true;
-    const lastIndex = splittedLine.length - 1;
+    const lastIndex = chars.length - 1;
 
-    splittedLine.forEach((char, index) => {
-        const previousChar = splittedLine[index - 1];
-        const nextChar = splittedLine[index + 1];
+    chars.forEach((char, index) => {
+        const previousChar = chars[index - 1];
+        const nextChar = chars[index + 1];
         if (char === DIC) {
             isValueComplete = !isValueComplete;
             if (
                 previousChar === DIC ||
-                previousChar === COMMA ||
-                nextChar === COMMA ||
+                previousChar === separator ||
+                nextChar === separator ||
                 index === lastIndex - 1 ||
                 index === 0
             ) {
@@ -36,8 +36,8 @@ const extractValues = function (splittedLine) {
             }
         }
 
-        if ((char === COMMA || index === lastIndex) && isValueComplete) {
-            if (char !== DIC && char !== COMMA && char !== "\r")
+        if ((char === separator || index === lastIndex) && isValueComplete) {
+            if (char !== DIC && char !== separator && char !== "\r")
                 value += char;
             values.push(value);
             value = ES;
@@ -61,11 +61,11 @@ const getObj = function (headers, lineData) {
     return obj;
 };
 
-const getFinalResult = function (data, headers) {
+const getFinalResult = function (data, headers, separator) {
     const finalResult = [];
     data.forEach(line => {
         line = line.split(ES);
-        const lineData = extractValues(line);
+        const lineData = extractValues(line, separator);
         const obj = getObj(headers, lineData);
         finalResult.push(obj);
     });
