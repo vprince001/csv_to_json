@@ -1,6 +1,6 @@
-<img src="./resources/csv_to_json.png" align="right" width="150" height="112.5"/>
-
-<h1 align="center">csv-file-to-json</h1>
+<p align="center">
+  <img src="./resources/csv_to_json.png" width="300" height="200"/>
+</p>
 
 <div align="center">
 
@@ -9,14 +9,14 @@ Reads a csv file or data variable having a table and returns an array of obects.
 </div>
 
 ## Installation
+
 ```
 npm i --save csv-file-to-json
 ```
-<br>
 
 ## Usage
+
 `csv-file-to-json` support CommonJS.
-<br>
 
 ### In module system
 
@@ -35,7 +35,6 @@ const dataInJSON = csvToJSON({ data: someCSVData });
 <br>
 
 #### Sample input (csv data) :
-
 ```
 FIRST_NAME,LAST_NAME,NUMBER,EMAIL,ADDRESS
 Debra,Burks,880012XXXX,debra.burks@yahoo.com,"9273 Thome Ave., `Orchard Park`, NY - 14127"
@@ -44,7 +43,6 @@ Tameka,Fisher,8800111XXX,null,"7693 ~ Honey Creek St., Redondo Beach, "CA"      
 ```
 
 #### Sample output (json data) :
-
 ```
 [
   {
@@ -89,6 +87,7 @@ Use `headers` key to specify your own headers.
 ```javascript
 const dataInJSON = csvToJSON({ filePath: "./filePath.txt", hasHeader: false, headers: ["FIRST_NAME", "LAST_NAME", "NUMBER", "EMAIL", "ADDRESS"] });
 ```
+<br>
 
 # References
 * To convert text and csv both to json. Try - https://www.npmjs.com/package/data-to-json
