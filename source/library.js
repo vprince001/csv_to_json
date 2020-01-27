@@ -74,7 +74,7 @@ const getFinalResult = function (data, headers) {
 
 const readFile = function (filePath, fs) {
     if (fs.existsSync(filePath))
-        return fs.readFileSync(filePath, FORMAT).replace(/^\uFEFF/, '').split(NL);
+        return fs.readFileSync(filePath, FORMAT).replace(/^\uFEFF/, '').trim().split(NL);
     console.error(`ERROR -->> ${filePath} is not a valid path.`);
     throw Error(FILE_NOT_FOUND_EXCEPTION);
 };
@@ -82,7 +82,7 @@ const readFile = function (filePath, fs) {
 const readData = function (data) {
     if (typeof data === STRING) {
         if (data.length)
-            return data.split(NL);
+            return data.trim().split(NL);
         console.error(EMPTY_DATA_MSG);
         throw Error(EMPTY_DATA_EXCEPTION);
     }
@@ -100,7 +100,6 @@ const getData = function (params, fs) {
     } else {
         return readData(params.data);
     }
-
 };
 
 module.exports = {
