@@ -6,7 +6,8 @@ const {
     getData,
     getFinalResult,
     readData,
-    readFile
+    readFile,
+    sliceHeaderIfNeeded
 } = require("../source/library");
 
 const {
@@ -144,6 +145,29 @@ describe("getFinalResult", function () {
     it("should return data in json for data in csv and array of headers", function () {
         const actual = getFinalResult(DATA_IN_ARRAY.slice(1), HEADERS);
         const expected = FINAL_RESULT;
+
+        deepEqual(actual, expected);
+    });
+});
+
+describe("sliceHeaderIfNeeded", function () {
+    it("should return data after slicing first element if hasHeader key is not provided in params", function () {
+        const actual = sliceHeaderIfNeeded({}, DATA_IN_ARRAY);
+        const expected = DATA_IN_ARRAY.slice(1);
+
+        deepEqual(actual, expected);
+    });
+
+    it("should return data after slicing first element if hasHeader key is true", function () {
+        const actual = sliceHeaderIfNeeded({hasHeader: true}, DATA_IN_ARRAY);
+        const expected = DATA_IN_ARRAY.slice(1);
+
+        deepEqual(actual, expected);
+    });
+
+    it("should return given data if hasHeader key is false", function () {
+        const actual = sliceHeaderIfNeeded({hasHeader: false}, DATA_IN_ARRAY);
+        const expected = DATA_IN_ARRAY.slice();
 
         deepEqual(actual, expected);
     });

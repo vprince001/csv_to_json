@@ -102,11 +102,19 @@ const getData = function (params, fs) {
     }
 };
 
+const sliceHeaderIfNeeded = (params, data) => {
+    if(params.hasOwnProperty('hasHeader')) {
+        return params.hasHeader ? data.slice(1) : data.slice();
+    }
+    return data.slice(1);
+};
+
 module.exports = {
     extractValues,
     getObj,
     getFinalResult,
     getData,
     readData,
-    readFile
+    readFile,
+    sliceHeaderIfNeeded
 };
