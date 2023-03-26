@@ -70,14 +70,14 @@ Tameka,Fisher,8800111XXX,null,"7693 ~ Honey Creek St., Redondo Beach, "CA"      
 ```
 <br>
 
-Use `separator` key to specific your separator. `Default separator is ","`.
+Use `separator` key to specify your separator. `Default separator is ","`.
 ```javascript
 const dataInJSON = csvToJSON({ filePath: "./filePath.txt", separator: "," });
 ```
 <br>
 
 Use `hasHeader` key to specify if your file or data contains a header line or not.<br>
-`Default is true and first line will be taken has header line`
+`Default is true and first line of csv will be considered as header`
 ```javascript
 const dataInJSON = csvToJSON({ filePath: "./filePath.txt", hasHeader: true });
 ```
